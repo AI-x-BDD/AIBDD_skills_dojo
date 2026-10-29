@@ -1,12 +1,10 @@
-# <repo 名稱>
-
-> 用這份 README 當範例，改成你自己的版本。repo 名稱請當成自己的作品集來命名。各節都可以改寫或刪除，只有文末的官方區塊要保留。
+# AIBDD skills dojo
 
 ## 關於這個 repo
 
-我在這個 repo 整理了 <主題> 相關的 skills，用來解決 <開發過程中遇到的問題>。
+我在這個 repo 整理了**軟體工程方法論**相關的 skills，把 Conventional Commits、Trunk-Based Development、Double Diamond 這三套有官方文獻的方法論，變成 AI agent 可以實際執行的 skill。
 
-<!-- 範例：我在這個 repo 整理了從撰寫規格到 TDD 實作的 skills，做法來自水球軟體學院《AI x BDD》課程，讓 AI 產出的程式碼能逐條對應回規格。 -->
+目的很單純：讓 AI 在開發時不要只是「照字面做」，而是先確認問題對不對、每次只改一小塊、並把改動的理由留在 commit 訊息裡。
 
 ## 結構說明
 
@@ -20,26 +18,39 @@
 
 ## 道館作業
 
-<!-- 若本 repo 不是道館作業，可刪除本節。 -->
+| 道館名稱 | 繳交版本 | 挑戰內容 |
+|---|---|---|
+| [道館一：三支 Skills 組合實戰](./docs/dojo-01-three-skills/) | v1（2026-10-29） | 研究 Conventional Commits、Trunk-Based Development、Double Diamond 三個主題並各自做成 skill，再把三支一起用在同一個專案上連續開發 5-8 個功能 —— [開發紀錄與觀察](./docs/dojo-01-three-skills/) |
 
-本 repo 用於繳交 <道館名稱>：
-
-1. 我依《AI x BDD》課程平台道館頁列出的題目與完成條件，完成該館要求的 skills。
-2. 我錄製了一支 3 分鐘內的 demo 影片，呈現 skill 的實際執行過程。
-3. 我在《AI x BDD》課程平台的道館頁貼上本 repo 連結與影片連結，完成繳交。
+每一館的細節都收在 `docs/` 底下，點進去可以看到該館的功能開發紀錄、完成條件核對，以及我自己的觀察。
 
 ## Skills 與設計想法
 
-以下說明這個 repo 收錄的 skills，以及我設計時的考量。
+三支都走同一個流程產出：先讀官方文獻、沿站內相關頁面延伸、整理成關鍵字／方法論／執行步驟／規則／適用條件與例外，再用 `/skill-creator` 寫成 skill。每支都保留 `references/` 讓人能回到原始出處核對。
 
-<!-- 以下為範例，請替換成你自己的 skill；每個 skill 一則，維持用途／使用時機／設計想法／驗證狀態四項。 -->
+### `/double-diamond-principle`（雙鑽石原則）
 
-### `gherkin-rule-check`
+- **用途**：用 Discover → Define → Develop → Deliver 四階段引導問題探索，強制「先找對問題，再找對解法」。
+- **使用時機**：需求看起來很明確、很想直接開工的時候 —— 那正是最該用它的時候。
+- **設計想法**：AI 最常見的失敗不是寫錯程式，是**把錯的需求完美實作出來**。這支 skill 的價值在於逼出「這個前提是真的嗎」這個問題。
+- **來源**：[Design Council — The Double Diamond](https://www.designcouncil.org.uk/resources/the-double-diamond/)、[Framework for Innovation](https://www.designcouncil.org.uk/resources/framework-for-innovation/)
+- **驗證狀態**：已實際使用，見[道館一功能一](./docs/dojo-01-three-skills/feature-01-watch-window.md)。該次它確實推翻了需求的核心前提。
 
-- **用途**：檢查 `.feature` 檔中每個 Scenario 是否只驗證一條規則，列出需要拆分的 Scenario。
-- **使用時機**：寫完規格、交給 AI 產生測試程式碼之前。
-- **設計想法**：一個 Scenario 混入多條規則時，AI 產生的測試容易漏掉其中一條。我先把規則拆開，後續的測試與實作就能逐條對應回規格。
-- **驗證狀態**：已在個人專案中實際使用。
+### `/trunk-based-development`（主幹式開發）
+
+- **用途**：決定要不要開分支、分支活多久、什麼時候整合、未完成的功能怎麼安全進 trunk。
+- **使用時機**：要進版控的時候；以及「這個改動太大，要不要開長命分支」的念頭浮現的時候。
+- **設計想法**：核心是「進行中的程式碼與 trunk 的距離」。距離越大，合併越痛。skill 裡把 feature flag 與 branch by abstraction 寫成明確選項，避免 AI 用長命分支解決問題。
+- **來源**：[trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/)
+- **驗證狀態**：已實際使用，見[道館一功能一](./docs/dojo-01-three-skills/feature-01-watch-window.md)。
+
+### `/git-conventional-commit`（慣例式提交）
+
+- **用途**：依 Conventional Commits v1.0.0 寫、檢查、修正 commit 訊息，包含 type 選擇與破壞性變更標示。
+- **使用時機**：每次 commit 前。
+- **設計想法**：規格只明定 `feat` 與 `fix`，其餘是業界慣例，所以 skill 裡附完整 type 對照表與 SemVer 對應，並強調「一次變更同時符合多個 type 就拆開」。
+- **來源**：[Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/)、[SemVer](https://semver.org/)
+- **驗證狀態**：已實際使用，見[道館一功能一](./docs/dojo-01-three-skills/feature-01-watch-window.md)。
 
 ## 交流
 
