@@ -28,16 +28,16 @@
 | # | 功能 | 需求單 | 產出 | 狀態 | 紀錄 |
 |---|---|---|---|---|---|
 | 1 | 讓監看區間由叫號號碼決定，不再寫死時鐘時間 | [#34](https://github.com/KLTsai/next-is-you/issues/34) | [PR #46](https://github.com/KLTsai/next-is-you/pull/46)<br>main：[`cd199d7`](https://github.com/KLTsai/next-is-you/commit/cd199d7) | ✅ 已合入 main | [詳細紀錄](./feature-01-watch-window.md) |
-| 2 | — | — | — | 未開始 | — |
-| 3 | — | — | — | 未開始 | — |
-| 4 | — | — | — | 未開始 | — |
-| 5 | — | — | — | 未開始 | — |
+| 2 | 讓系統不再只懂台大一家，把每家醫院的讀取方式獨立成可替換模組 | [#45](https://github.com/KLTsai/next-is-you/issues/45) | — | 未開始 | — |
+| 3 | 讀出某科當天在看診的醫生與診間 | [#45](https://github.com/KLTsai/next-is-you/issues/45) | — | 未開始 | — |
+| 4 | 報到設定改成用選的，只剩看診號碼要手填 | [#45](https://github.com/KLTsai/next-is-you/issues/45) | — | 未開始 | — |
+| 5 | 送出前擋掉填錯的看診資料 | [#45](https://github.com/KLTsai/next-is-you/issues/45) | — | 未開始 | — |
 
 ## 完成條件核對
 
 | 條件 | 狀態 |
 |---|---|
-| 三支 Skill 的完整資料夾 | 🚧 檔案已就位（[`.claude/skills/`](../../.claude/skills/)、[`.agents/skills/`](../../.agents/skills/)），但**尚未 commit 進 git**，推上去才算繳交 |
+| 三支 Skill 的完整資料夾 | ✅ 已 commit 並推上 remote（[`.claude/skills/`](../../.claude/skills/)、[`.agents/skills/`](../../.agents/skills/)） |
 | 同一專案完成 5-8 個功能的 git commits 紀錄 | 🚧 1 / 5 |
 | 人類觀察：哪些原則被遵循、哪些沒有、優化空間 | 🚧 隨各功能紀錄累積，見[累積的 skill 改進提案](#累積的-skill-改進提案) |
 | 一分鐘介紹影片 | ❌ 未製作 |
