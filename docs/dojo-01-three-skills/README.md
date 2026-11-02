@@ -28,18 +28,18 @@
 | # | 功能 | 需求單 | 產出 | 狀態 | 紀錄 |
 |---|---|---|---|---|---|
 | 1 | 讓監看區間由叫號號碼決定，不再寫死時鐘時間 | [#34](https://github.com/KLTsai/next-is-you/issues/34) | [PR #46](https://github.com/KLTsai/next-is-you/pull/46)<br>main：[`cd199d7`](https://github.com/KLTsai/next-is-you/commit/cd199d7) | ✅ 已合入 main | [詳細紀錄](./feature-01-watch-window.md) |
-| 2 | 讓系統不再只懂台大一家，把每家醫院的讀取方式獨立成可替換模組 | [#45](https://github.com/KLTsai/next-is-you/issues/45) | — | 未開始 | — |
-| 3 | 讀出某科當天在看診的醫生與診間 | [#45](https://github.com/KLTsai/next-is-you/issues/45) | — | 未開始 | — |
-| 4 | 報到設定改成用選的，只剩看診號碼要手填 | [#45](https://github.com/KLTsai/next-is-you/issues/45) | — | 未開始 | — |
-| 5 | 送出前擋掉填錯的看診資料 | [#45](https://github.com/KLTsai/next-is-you/issues/45) | — | 未開始 | — |
+| 2 | 讓系統不再只懂台大一家，把每家醫院的讀取方式獨立成可替換模組 | [#45](https://github.com/KLTsai/next-is-you/issues/45) | [PR #48](https://github.com/KLTsai/next-is-you/pull/48)<br>main：[`5a96d4f`](https://github.com/KLTsai/next-is-you/commit/5a96d4f) | ✅ 已合入 main（⚠️ 紀錄為事後補寫，見下方流程缺口） | [詳細紀錄](./feature-02-hospital-adapter-boundary.md) |
+| 3 | 讀出某科當天在看診的醫生與診間 | [#47](https://github.com/KLTsai/next-is-you/issues/47)（從 #45 拆出） | [PR #49](https://github.com/KLTsai/next-is-you/pull/49)<br>main：[`bec72a5`](https://github.com/KLTsai/next-is-you/commit/bec72a5) | ✅ 已合入 main（⚠️ 紀錄為事後補寫，見下方流程缺口） | [詳細紀錄](./feature-03-clinic-roster.md) |
+| 4 | 報到設定改成用選的，只剩看診號碼要手填 | [#47](https://github.com/KLTsai/next-is-you/issues/47)（從 #45 拆出） | [PR #54](https://github.com/KLTsai/next-is-you/pull/54)<br>main：[`73260e2`](https://github.com/KLTsai/next-is-you/commit/73260e2) | ✅ 已合入 main（⚠️ 紀錄為事後補寫，見下方流程缺口） | [詳細紀錄](./feature-04-cascading-setup-ui.md) |
+| 5 | 送出前擋掉填錯的看診資料 | [#45](https://github.com/KLTsai/next-is-you/issues/45) | — | ❌ 未開始，且被功能 2/3/4 的範圍擴張連帶遺漏 | 見[功能四的共通觀察](./feature-04-cascading-setup-ui.md#功能-234-共通觀察道館的一功能一輪規則沒有被遵守) |
 
 ## 完成條件核對
 
 | 條件 | 狀態 |
 |---|---|
 | 三支 Skill 的完整資料夾 | ✅ 已 commit 並推上 remote（[`.claude/skills/`](../../.claude/skills/)、[`.agents/skills/`](../../.agents/skills/)） |
-| 同一專案完成 5-8 個功能的 git commits 紀錄 | 🚧 1 / 5 |
-| 人類觀察：哪些原則被遵循、哪些沒有、優化空間 | 🚧 隨各功能紀錄累積，見[累積的 skill 改進提案](#累積的-skill-改進提案) |
+| 同一專案完成 5-8 個功能的 git commits 紀錄 | 🚧 4 / 5（功能 5 尚未開工） |
+| 人類觀察：哪些原則被遵循、哪些沒有、優化空間 | 🚧 隨各功能紀錄累積，見[累積的 skill 改進提案](#累積的-skill-改進提案)與[道館流程本身的缺口](#道館流程本身的缺口功能-234-被連著做完才發現) |
 | 一分鐘介紹影片 | ❌ 未製作 |
 
 ## 累積的 skill 改進提案
@@ -65,6 +65,19 @@
 | 建議改動 | 提出時機 | 細節 |
 |---|---|---|
 | 開分支那一刻明確要求 fetch main | 功能一 | [紀錄 §7-5](./feature-01-watch-window.md#5-trunk-based-development--開分支那一刻需要明確要求-fetch-main) |
+| `git add -A` 前先核對 staged 清單，避免把不相關的零散改動掃進功能 commit | 功能三 | [紀錄](./feature-03-clinic-roster.md#最終的-commit-紀錄) |
+
+## 道館流程本身的缺口：功能 2/3/4 被連著做完才發現
+
+這一條不屬於三支 skill 任何一支的內容，是**道館執行流程本身**的缺口，留在這裡而不是歸進上面任何一支 skill。
+
+本道館的規則是「每次只做一個功能，觀察 agent 對三支 skill 的遵循程度」。實際執行時，功能二（PR #48）的 CI 還沒跑完、PR 還沒合入，就已經被要求去規劃功能三/四（當時還是 #47 這張需求單）；功能三完成後緊接著做功能四，中間沒有停下來寫觀察紀錄，也沒有回頭核對道館表格的功能編號。三個功能、三個 PR 都合入 main 之後，才由人類發問「怎麼一次把範圍都做完了」，才回頭補寫這三份紀錄（[功能二](./feature-02-hospital-adapter-boundary.md)、[功能三](./feature-03-clinic-roster.md)、[功能四](./feature-04-cascading-setup-ui.md)）。
+
+連帶後果：功能五（送出前擋掉填錯的看診資料）被整個遺漏，不是被合併——它從頭到尾沒被當成一個題目 Discover 過，詳情見[功能四文件的共通觀察](./feature-04-cascading-setup-ui.md#功能-234-共通觀察道館的一功能一輪規則沒有被遵守)。
+
+根因不是三支 skill 內容本身的問題——各支 skill 在單一功能範圍內都有被遵守的證據。根因是 agent 順著 issue 之間的 `Refs` / `Depends on` 連結一路往前推進，卻沒有拿道館表格的功能編號逐項核對範圍邊界。這兩種邊界（issue 拆分邊界、道館觀察邊界）是不同的事，agent 把它們混為一談。
+
+**給下一輪的規則**：每次只交給 agent 道館表格裡的一個功能編號；一個功能合入 main 後先停下來，確認觀察紀錄寫完、表格更新完，才開下一個編號。agent 自己發現某張 issue 能再拆成更小的切片時，先回報「這張 issue 可以拆成 N 個道館功能、對應哪幾個編號」，等人類確認，再動工。
 
 ## 本道館最值得記下的一件事
 
