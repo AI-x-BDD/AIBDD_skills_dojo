@@ -42,6 +42,19 @@
 | 人類觀察：哪些原則被遵循、哪些沒有、優化空間 | 🚧 隨各功能紀錄累積，見[累積的 skill 改進提案](#累積的-skill-改進提案)與[道館流程本身的觀察](#道館流程本身的觀察一功能一-session) |
 | 一分鐘介紹影片 | ❌ 未製作 |
 
+## 對照作業的觀察項目
+
+作業原文的「你要觀察什麼」列了四件事：開發前的流程（Double Diamond）、整合方式（trunk）、commit 的格式與拆分、完成時的回報。下表把四個已完成的功能逐項對照，✅ 表示有看到，⚠️ 表示部分做到或有缺口。每格的證據在該功能的紀錄裡。
+
+| 觀察項目 | [功能一](./feature-01-watch-window.md) | [功能二](./feature-02-hospital-adapter-boundary.md) | [功能三](./feature-03-clinic-roster.md) | [功能四](./feature-04-cascading-setup-ui.md) |
+|---|---|---|---|---|
+| 開發前理解問題、收斂範圍、提出做法、選定後小範圍測試、取得新資訊時回頭修正 | ✅ Discover 重開兩次，前提被推翻後修正 | ⚠️ 需求單收斂並提出範圍選項；設計層級沒看到並列比較的做法 | ⚠️ 同左，且沒有需要回頭修正的新資訊 | ✅ 動工前做原型審閱，六項決策；Q5 與自己引入的硬寫格式缺陷都回頭修正 |
+| 一次一個足夠小的功能、短命分支、整合前跑測試、trunk 可發布、未完成變更用 flag 或 branch by abstraction | ✅ 短命分支、255 測試；⚠️ 沒 fetch main | ✅ branch by abstraction；⚠️ +393 / -23、11 檔案 | ⚠️ 一度疊在未合入的分支；+493 / -12、10 檔案 | ✅ CI 偶發失敗修根因；⚠️ +484 / -87、11 檔案 |
+| 不相關變更拆開、Conventional Commits 格式與 type、破壞性變更標示 | ⚠️ 一則 commit 含兩個主題 | ⚠️ `git add -A` 掃進無關改動 | ⚠️ 一則標題 82 字元，被 GitHub 截斷 | ✅ 四則依主題拆開 |
+| 完成時簡短指出 Double Diamond 怎麼用、測試結果、branch 與整合狀態、實際 commit message | 本次未逐項查證 | ⚠️ 有測試與分支；Double Diamond 只一句帶過；沒有 commit 原文 | ⚠️ 有測試與分支；沒提 Double Diamond；沒有 commit 原文 | ⚠️ 同左 |
+
+作業另外要求「每一次只開發一個功能」。功能二到四是同一個 session 連著做完的，見[道館流程本身的觀察](#道館流程本身的觀察一功能一-session)。
+
 ## 累積的 skill 改進提案
 
 從實際使用中發現「skill 自身可以修」的地方，依 skill 聚合。「細節」欄的「提案 N」，對應該功能紀錄裡「這次暴露的 skill 可改進點」底下的第 N 條，點進去看完整脈絡。
@@ -53,7 +66,9 @@
 | Discover 階段明確禁止「問解法層面的問題」 | 功能一 | [提案 1](./feature-01-watch-window.md#1-double-diamond-principle--discover-階段需要明確禁止問解法層面的問題) |
 | Discover 補一條「第一站是專案的證據目錄」 | 功能一 | [提案 2](./feature-01-watch-window.md#2-double-diamond-principle--discover-需要補一條第一站是專案的證據目錄) |
 | Discover 補「使用外部資源的量體要先宣告」 | 功能一 | [提案 3](./feature-01-watch-window.md#3-double-diamond-principle--discover-需要指引使用外部資源的量體要先宣告) |
+| Deliver 要有「交付完就停」的規則，agent 自己會提議下一個功能 | 功能二 | [提案 2](./feature-02-hospital-adapter-boundary.md#2-double-diamond-principle---deliver-沒有交付完就停的規則agent-自己會提議下一個功能) |
 | 不要把系統的嚴格要求直接轉嫁給使用者（要同時給取得正確值的路徑） | 功能四 | [提案 1](./feature-04-cascading-setup-ui.md#1-double-diamond-principle---不要把系統的嚴格要求直接轉嫁給使用者) |
+| 完成時要回報四件事：流程怎麼用、測試、整合狀態、commit 原文（三支 skill 皆適用） | 功能四 | [提案 3](./feature-04-cascading-setup-ui.md#3-double-diamond-principle---沒有要求完成時回報怎麼用了這個流程三支-skill-皆適用) |
 
 ### `/git-conventional-commit`
 
@@ -61,15 +76,15 @@
 |---|---|---|
 | 「相同 type 但主題不同的多件事也要拆」要寫得更明確 | 功能一 | [提案 4](./feature-01-watch-window.md#4-git-conventional-commit--相同-type-但主題不同的多件事也要拆要寫得更明確) |
 | 自我檢查要加一條「commit 前核對 staged 檔案清單」（目前只檢查訊息格式） | 功能二 | [提案 1](./feature-02-hospital-adapter-boundary.md#1-git-conventional-commit---自我檢查要加一條commit-前核對-staged-檔案清單) |
+| 標題長度要有數字上限（72 字元），目前只寫「精簡」 | 功能三 | [提案 1](./feature-03-clinic-roster.md#1-git-conventional-commit---沒有-subject-長度的規則commit-標題被-github-截成兩半) |
 
 ### `/trunk-based-development`
 
 | 建議改動 | 提出時機 | 細節 |
 |---|---|---|
 | 開分支那一刻明確要求 fetch main | 功能一 | [提案 5](./feature-01-watch-window.md#5-trunk-based-development--開分支那一刻需要明確要求-fetch-main) |
+| 「小」要有大小標準，目前只有時間上限 | 功能三 | [提案 2](./feature-03-clinic-roster.md#2-trunk-based-development---小只有時間上限沒有大小標準) |
 | 「不穩的測試」不能跟「慢的測試」一樣往 pipeline 後段搬，要當壞掉的 build 修 | 功能四 | [提案 2](./feature-04-cascading-setup-ui.md#2-trunk-based-development---不穩的測試不能跟慢的測試一樣處理) |
-
-功能三沒有新增提案：那一輪的單一功能範圍內，三支 skill 都有被遵循，沒有看到需要補強的規則。
 
 ## 道館流程本身的觀察：一功能一 session
 
@@ -81,7 +96,7 @@
 
 連帶後果：功能五（送出前擋掉填錯的看診資料）沒有被涵蓋。它不是被合併進前三輪，是整個沒被當成題目 Discover 過；PR #54 附帶的兩條驗證是功能四選單模式的必要配套，不是功能五的範圍。完整說明見[功能 2/3/4 的共同觀察](./feature-04-cascading-setup-ui.md#功能-234-的共同觀察一個-session-連著跑完三輪)。
 
-三支 skill 在每一輪的單一功能範圍內都有被遵循的證據（見三份紀錄的核對表），所以這不是 skill 內容的缺口，這裡也不提 skill 修改建議。
+「一次只做一個功能」是作業本身的要求；三支 skill 能不能幫 agent 守住它，是另一件事 - 三支 skill 都沒有任何「交付後停下來」的文字，這個觀察記在功能二的[提案 2](./feature-02-hospital-adapter-boundary.md#2-double-diamond-principle---deliver-沒有交付完就停的規則agent-自己會提議下一個功能)。
 
 **給下一輪的執行規則**：每個功能開一個新 session，開場 prompt 寫明道館的功能編號、對應的需求單，以及「做完這一個就停，不規劃下一個」。該功能合入 main 並寫完觀察紀錄、更新道館表格之後，才在新 session 開始下一個編號。agent 若發現某張 issue 能再拆成更小的切片，只回報切法，等人指派編號再動工。
 
