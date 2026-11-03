@@ -51,7 +51,7 @@
 | 開發前理解問題、收斂範圍、提出做法、選定後小範圍測試、取得新資訊時回頭修正 | ✅ Discover 重開兩次，前提被推翻後修正 | ⚠️ 需求單收斂並提出範圍選項；設計層級沒看到並列比較的做法 | ⚠️ 同左，且沒有需要回頭修正的新資訊 | ✅ 動工前做原型審閱，六項決策；Q5 與自己引入的硬寫格式缺陷都回頭修正 |
 | 一次一個足夠小的功能、短命分支、整合前跑測試、trunk 可發布、未完成變更用 flag 或 branch by abstraction | ✅ 短命分支、255 測試；⚠️ 沒 fetch main | ✅ branch by abstraction；⚠️ +393 / -23、11 檔案 | ⚠️ 一度疊在未合入的分支；+493 / -12、10 檔案 | ✅ CI 偶發失敗修根因；⚠️ +484 / -87、11 檔案 |
 | 不相關變更拆開、Conventional Commits 格式與 type、破壞性變更標示 | ⚠️ 一則 commit 含兩個主題 | ⚠️ `git add -A` 掃進無關改動 | ⚠️ 一則標題 82 字元，被 GitHub 截斷 | ✅ 四則依主題拆開 |
-| 完成時簡短指出 Double Diamond 怎麼用、測試結果、branch 與整合狀態、實際 commit message | 本次未逐項查證 | ⚠️ 有測試與分支；Double Diamond 只一句帶過；沒有 commit 原文 | ⚠️ 有測試與分支；沒提 Double Diamond；沒有 commit 原文 | ⚠️ 同左 |
+| 完成時簡短指出 Double Diamond 怎麼用、測試結果、branch 與整合狀態、實際 commit message | ✅ 說明實作與原要求的差異與原因（實地讀取推翻了「列」是活躍信號）、PR 與 CI 狀態、兩則 commit 的 type 與用途；測試只說 CI 綠 | ⚠️ 有測試與分支；Double Diamond 只一句帶過；沒有 commit 原文 | ⚠️ 有測試與分支；沒提 Double Diamond；沒有 commit 原文 | ⚠️ 同左 |
 
 作業另外要求「每一次只開發一個功能」。功能二到四是同一個 session 連著做完的，見[道館流程本身的觀察](#道館流程本身的觀察一功能一-session)。
 
