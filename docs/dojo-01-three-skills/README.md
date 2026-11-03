@@ -31,14 +31,14 @@
 | 2 | 讓系統不再只懂台大一家，把每家醫院的讀取方式獨立成可替換模組 | [#45](https://github.com/KLTsai/next-is-you/issues/45) | [PR #48](https://github.com/KLTsai/next-is-you/pull/48)<br>main：[`5a96d4f`](https://github.com/KLTsai/next-is-you/commit/5a96d4f) | ✅ 已合入 main | [詳細紀錄](./feature-02-hospital-adapter-boundary.md) |
 | 3 | 讀出某科當天在看診的醫生與診間 | [#47](https://github.com/KLTsai/next-is-you/issues/47)（功能二在 Define 階段從 #45 切出） | [PR #49](https://github.com/KLTsai/next-is-you/pull/49)<br>main：[`bec72a5`](https://github.com/KLTsai/next-is-you/commit/bec72a5) | ✅ 已合入 main | [詳細紀錄](./feature-03-clinic-roster.md) |
 | 4 | 報到設定改成用選的，只剩看診號碼要手填 | [#47](https://github.com/KLTsai/next-is-you/issues/47)（同上） | [PR #54](https://github.com/KLTsai/next-is-you/pull/54)<br>main：[`73260e2`](https://github.com/KLTsai/next-is-you/commit/73260e2) | ✅ 已合入 main | [詳細紀錄](./feature-04-cascading-setup-ui.md) |
-| 5 | 送出前擋掉填錯的看診資料 | [#45](https://github.com/KLTsai/next-is-you/issues/45) | - | ❌ 未開始（功能 2-4 那一輪沒有涵蓋到它） | 見[功能 2/3/4 的共同觀察](./feature-04-cascading-setup-ui.md#功能-234-的共同觀察一個-session-連著跑完三輪) |
+| 5 | 送出前擋掉填錯的看診資料 | [#45](https://github.com/KLTsai/next-is-you/issues/45) 的 AC #4，另切 [#58](https://github.com/KLTsai/next-is-you/issues/58) 作為聚焦票 | [PR #59](https://github.com/KLTsai/next-is-you/pull/59)<br>main：[`514b03f`](https://github.com/KLTsai/next-is-you/commit/514b03f) | ✅ 已合入 main | [詳細紀錄](./feature-05-preflight-validation.md) |
 
 ## 完成條件核對
 
 | 條件 | 狀態 |
 |---|---|
 | 三支 Skill 的完整資料夾 | ✅ 已 commit 並推上 remote（[`.claude/skills/`](../../.claude/skills/)、[`.agents/skills/`](../../.agents/skills/)） |
-| 同一專案完成 5-8 個功能的 git commits 紀錄 | 🚧 4 / 5（功能 5 尚未開工） |
+| 同一專案完成 5-8 個功能的 git commits 紀錄 | ✅ 5 / 5-8（功能 1-5 已完成） |
 | 人類觀察：哪些原則被遵循、哪些沒有、優化空間 | 🚧 隨各功能紀錄累積，見[累積的 skill 改進提案](#累積的-skill-改進提案)與[道館流程本身的觀察](#道館流程本身的觀察一功能一-session) |
 | 一分鐘介紹影片 | ❌ 未製作 |
 
