@@ -39,51 +39,51 @@
 |---|---|
 | 三支 Skill 的完整資料夾 | ✅ 已 commit 並推上 remote（[`.claude/skills/`](../../.claude/skills/)、[`.agents/skills/`](../../.agents/skills/)） |
 | 同一專案完成 5-8 個功能的 git commits 紀錄 | 🚧 4 / 5（功能 5 尚未開工） |
-| 人類觀察：哪些原則被遵循、哪些沒有、優化空間 | 🚧 隨各功能紀錄累積，見[累積的 skill 改進提案](#累積的-skill-改進提案)與[道館流程本身的觀察](#道館流程本身的觀察一輪在哪裡結束) |
+| 人類觀察：哪些原則被遵循、哪些沒有、優化空間 | 🚧 隨各功能紀錄累積，見[累積的 skill 改進提案](#累積的-skill-改進提案)與[道館流程本身的觀察](#道館流程本身的觀察一功能一-session) |
 | 一分鐘介紹影片 | ❌ 未製作 |
 
 ## 累積的 skill 改進提案
 
-從實際使用中發現「skill 自身可以修」的地方，依 skill 聚合。每一條都註明是哪一次功能發現的，點進去看完整脈絡。
+從實際使用中發現「skill 自身可以修」的地方，依 skill 聚合。「細節」欄的「提案 N」，對應該功能紀錄裡「這次暴露的 skill 可改進點」底下的第 N 條，點進去看完整脈絡。
 
 ### `/double-diamond-principle`
 
 | 建議改動 | 提出時機 | 細節 |
 |---|---|---|
-| Discover 階段明確禁止「問解法層面的問題」 | 功能一 | [紀錄 §7-1](./feature-01-watch-window.md#1-double-diamond-principle--discover-階段需要明確禁止問解法層面的問題) |
-| Discover 補一條「第一站是專案的證據目錄」 | 功能一 | [紀錄 §7-2](./feature-01-watch-window.md#2-double-diamond-principle--discover-需要補一條第一站是專案的證據目錄) |
-| Discover 補「使用外部資源的量體要先宣告」 | 功能一 | [紀錄 §7-3](./feature-01-watch-window.md#3-double-diamond-principle--discover-需要指引使用外部資源的量體要先宣告) |
-| Define 切出去的半邊，要同時定下「重新進場的條件」 | 功能二 | [紀錄](./feature-02-hospital-adapter-boundary.md#這次暴露的-skill-可改進點) |
-| Develop 的原型必須涵蓋降級與失敗路徑，不只順利路徑 | 功能四 | [紀錄](./feature-04-cascading-setup-ui.md#這次暴露的-skill-可改進點) |
-| 不要把系統的嚴格要求直接轉嫁給使用者（要同時給取得正確值的路徑） | 功能四 | [紀錄](./feature-04-cascading-setup-ui.md#這次暴露的-skill-可改進點) |
+| Discover 階段明確禁止「問解法層面的問題」 | 功能一 | [提案 1](./feature-01-watch-window.md#1-double-diamond-principle--discover-階段需要明確禁止問解法層面的問題) |
+| Discover 補一條「第一站是專案的證據目錄」 | 功能一 | [提案 2](./feature-01-watch-window.md#2-double-diamond-principle--discover-需要補一條第一站是專案的證據目錄) |
+| Discover 補「使用外部資源的量體要先宣告」 | 功能一 | [提案 3](./feature-01-watch-window.md#3-double-diamond-principle--discover-需要指引使用外部資源的量體要先宣告) |
+| 不要把系統的嚴格要求直接轉嫁給使用者（要同時給取得正確值的路徑） | 功能四 | [提案 1](./feature-04-cascading-setup-ui.md#1-double-diamond-principle---不要把系統的嚴格要求直接轉嫁給使用者) |
 
 ### `/git-conventional-commit`
 
 | 建議改動 | 提出時機 | 細節 |
 |---|---|---|
-| 「相同 type 但主題不同的多件事也要拆」要寫得更明確 | 功能一 | [紀錄 §7-4](./feature-01-watch-window.md#4-git-conventional-commit--相同-type-但主題不同的多件事也要拆要寫得更明確) |
-| 自我檢查要加一條「commit 前核對 staged 檔案清單」（目前只檢查訊息格式） | 功能三 | [紀錄](./feature-03-clinic-roster.md#這次暴露的-skill-可改進點) |
+| 「相同 type 但主題不同的多件事也要拆」要寫得更明確 | 功能一 | [提案 4](./feature-01-watch-window.md#4-git-conventional-commit--相同-type-但主題不同的多件事也要拆要寫得更明確) |
+| 自我檢查要加一條「commit 前核對 staged 檔案清單」（目前只檢查訊息格式） | 功能二 | [提案 1](./feature-02-hospital-adapter-boundary.md#1-git-conventional-commit---自我檢查要加一條commit-前核對-staged-檔案清單) |
 
 ### `/trunk-based-development`
 
 | 建議改動 | 提出時機 | 細節 |
 |---|---|---|
-| 開分支那一刻明確要求 fetch main | 功能一 | [紀錄 §7-5](./feature-01-watch-window.md#5-trunk-based-development--開分支那一刻需要明確要求-fetch-main) |
-| 定義「一輪工作的結束點」：合入 trunk 且紀錄完成前，不開始下一輪 | 功能二 | [紀錄](./feature-02-hospital-adapter-boundary.md#1-trunk-based-development---需要定義一輪工作的結束點) |
-| 順手整合待辦的零碎改動要獨立成 commit，不併入功能 commit | 功能三 | [紀錄](./feature-03-clinic-roster.md#這次暴露的-skill-可改進點) |
-| 「不穩的測試」不能跟「慢的測試」一樣往 pipeline 後段搬，要當壞掉的 build 修 | 功能四 | [紀錄](./feature-04-cascading-setup-ui.md#這次暴露的-skill-可改進點) |
+| 開分支那一刻明確要求 fetch main | 功能一 | [提案 5](./feature-01-watch-window.md#5-trunk-based-development--開分支那一刻需要明確要求-fetch-main) |
+| 「不穩的測試」不能跟「慢的測試」一樣往 pipeline 後段搬，要當壞掉的 build 修 | 功能四 | [提案 2](./feature-04-cascading-setup-ui.md#2-trunk-based-development---不穩的測試不能跟慢的測試一樣處理) |
 
-## 道館流程本身的觀察：一輪在哪裡結束
+功能三沒有新增提案：那一輪的單一功能範圍內，三支 skill 都有被遵循，沒有看到需要補強的規則。
 
-這一條不屬於三支 skill 任何一支的內容，是**道館執行流程本身**該補的規則，留在這裡而不是歸進上面任何一支 skill。
+## 道館流程本身的觀察：一功能一 session
 
-本道館的設計是「每次只做一個功能，分開觀察 agent 對三支 skill 的遵循程度」。功能 2/3/4 實際上是在同一條連續的工作線上跑完的：功能二的 PR（#48）開出、CI 還在跑時就開始規劃 #47（功能三與功能四的來源需求單），功能三完成後緊接著做功能四，中途沒有分段。agent 是順著 issue 之間的 `Refs` / `Depends on` 連結往前推進，沒有拿道館表格的功能編號核對範圍邊界 - issue 的相依邊界與道館的觀察邊界是兩件不同的事。
+這一條不屬於三支 skill 任何一支的內容，是**道館實驗協定**沒有被帶進 session 的紀錄，所以留在這裡，不歸進上面任何一支 skill。
+
+本道館的設計是「每次只做一個功能、每個功能開新的 session，分開觀察 agent 對三支 skill 的遵循程度」。這個想法在功能一的 session 結尾由人類說過（「之後會開新的 session 來製作剩下的功能」），但沒有寫進功能二那個 session 的開場 prompt（只有「第二個功能（#45 issue）」），agent 也沒有讀過道館的功能表。
+
+結果功能二、三、四是在**同一個 session** 裡做完的：功能二的 PR（#48）開出、CI 還在跑時，agent 主動問「要等 CI 綠就先停，還是先去規劃 #47」，人類選了後者；之後功能三、功能四接著做，中途沒有分段。agent 是順著 issue 之間的 `Refs` / `Depends on` 連結往前推進，而不是照道館表格的功能編號。
 
 連帶後果：功能五（送出前擋掉填錯的看診資料）沒有被涵蓋。它不是被合併進前三輪，是整個沒被當成題目 Discover 過；PR #54 附帶的兩條驗證是功能四選單模式的必要配套，不是功能五的範圍。完整說明見[功能 2/3/4 的共同觀察](./feature-04-cascading-setup-ui.md#功能-234-的共同觀察一個-session-連著跑完三輪)。
 
-這個現象不是三支 skill 內容本身的問題 - 三支 skill 在每一輪的單一功能範圍內都有被遵循的證據（見三份紀錄的核對表）。缺的是「一輪在哪裡結束」這條規則，而這正是[功能二](./feature-02-hospital-adapter-boundary.md#1-trunk-based-development---需要定義一輪工作的結束點)與[功能四](./feature-04-cascading-setup-ui.md#這次暴露的-skill-可改進點)各自提出的 skill 建議要補上的東西。
+三支 skill 在每一輪的單一功能範圍內都有被遵循的證據（見三份紀錄的核對表），所以這不是 skill 內容的缺口，這裡也不提 skill 修改建議。
 
-**給下一輪的執行規則**：每次只交給 agent 道館表格裡的一個功能編號；該功能合入 main 後先停下來，確認觀察紀錄與表格都更新完，才開下一個編號。agent 若發現某張 issue 能再拆成更小的切片，只回報切法（「這張可以拆成 N 個道館功能」），等人指派編號再動工。
+**給下一輪的執行規則**：每個功能開一個新 session，開場 prompt 寫明道館的功能編號、對應的需求單，以及「做完這一個就停，不規劃下一個」。該功能合入 main 並寫完觀察紀錄、更新道館表格之後，才在新 session 開始下一個編號。agent 若發現某張 issue 能再拆成更小的切片，只回報切法，等人指派編號再動工。
 
 ## 本道館最值得記下的一件事
 
